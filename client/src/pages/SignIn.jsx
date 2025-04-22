@@ -30,7 +30,7 @@ function SignIn() {
       const data = await res.json();
 
       if (data.success === false) {
-        dispatch(signInFailure());
+        dispatch(signInFailure(data));
         return;
       }
       dispatch(signInSuccess(data));
