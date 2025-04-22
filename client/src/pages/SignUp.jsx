@@ -1,7 +1,8 @@
 import { useState } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,12 +23,13 @@ function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setLoading(false);
       if (data.success === false) {
         setError(true);
         return;
       }
+      navigate("/sign-in");
     } catch (error) {
       console.log(error);
 
