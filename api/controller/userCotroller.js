@@ -1,9 +1,8 @@
-const User = require("../models/User");
-const bcryptjs = require("bcryptjs");
-const { errorHandler } = require("../utils/error");
-exports.updateUser = async (req, res, next) => {
-  // console.log(req.body);
+import User from "../models/User.js";
+import bcryptjs from "bcryptjs";
+import { errorHandler } from "../utils/error.js";
 
+export const updateUser = async (req, res, next) => {
   if (req.user.id !== req.params.id) {
     return next(errorHandler(401, "You can update only your account!"));
   }
@@ -23,13 +22,15 @@ exports.updateUser = async (req, res, next) => {
       { $set: updates },
       { new: true }
     );
+
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
   } catch (error) {
     next(error);
   }
 };
-exports.deleteUser = async (req, res, next) => {
+
+export const deleteUser = async (req, res, next) => {
   if (req.user.id !== req.params.id) {
     return next(errorHandler(401, "You can delete only your account!"));
   }
