@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import userRouter from "./routs/userRoute.js";
+import userRouter from "./routs/UserRoute.js";
 import authRouter from "./routs/AuthRoute.js";
 
 dotenv.config();
