@@ -4,7 +4,7 @@ const userRouter = require("./routs/userRoute");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routs/AuthRoute");
 require("dotenv").config();
-import path from "path";
+const path = require("path");
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
