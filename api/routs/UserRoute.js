@@ -1,7 +1,8 @@
 const express = require("express");
 const { updateUser, deleteUser } = require("../controller/userCotroller");
+const { verifyToken } = require("../utils/verifyToken");
 const router = express.Router();
 
-router.patch("/update/:id", updateUser);
-router.delete("/delete/:id", deleteUser);
+router.put("/update/:id", verifyToken, updateUser);
+router.delete("/delete/:id", verifyToken, deleteUser);
 module.exports = router;
